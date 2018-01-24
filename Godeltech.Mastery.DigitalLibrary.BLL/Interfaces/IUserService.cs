@@ -16,5 +16,6 @@ namespace Godeltech.Mastery.DigitalLibrary.BLL.Interfaces
         Task<IdentityResult> ConfirmEmailAsync(string userId, string code);
         Task<UserDto> FindByNameAsync(string userName);
         Task<IdentityResult> ResetPasswordAsync(string userId, string token, string newPassword);
+
     }
 }
