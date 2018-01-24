@@ -1,0 +1,18 @@
+﻿#cart-body{
+  margin-bottom:40px;
+
+}
+
+.cart-label {
+    color: rgb(0, 29, 63);
+    font-family: 'Oleo Script', cursive;
+}
+
+.cart-picture {
+    height: 40px;
+    overflow: hidden;
+}
+.cart-picture > img {
+     height: 40px;
+}
+

@@ -1,0 +1,12 @@
+﻿@model IEnumerable<application.Models.MenuItem>
+
+<h4>Site Map</h4>
+
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>
+            @Html.ActionLink(item.Name, item.Action, item.Controller)
+        </li>
+    }
+</ul>

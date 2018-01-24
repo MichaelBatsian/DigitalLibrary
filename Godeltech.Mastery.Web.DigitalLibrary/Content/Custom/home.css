@@ -1,0 +1,167 @@
+﻿.bodyView {
+    background: url(~/Content/Images/Home/books-library-legal-ss-1920.jpg);
+    height: 100vh;
+}
+
+.slider-position {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.product-label {
+    background-color: white;
+}
+
+.products-list {
+    background-color: white;
+    padding: 30px;
+}
+
+.products.container {
+    /*padding-bottom:50px!important;*/
+}
+
+.title {
+    text-align: center;
+    background-color: rgb(226, 229, 234);
+    margin-top: -50px;
+}
+
+.contacts {
+    background-color: rgb(226, 229, 234);
+}
+/*Contact section*/
+.content-header {
+    font-family: 'Oleo Script', cursive;
+    color: #fcc500;
+    font-size: 45px;
+}
+
+.section-content {
+    text-align: center;
+}
+
+#contact {
+    font-family: 'Teko', sans-serif;
+    padding-top: 60px;
+    width: 100%;
+    width: 100vw;
+    height: 550px;
+    background: #3a6186; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #3a6186, #258389); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #3a6186, #258977); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: #fff;
+}
+
+.contact-section {
+    padding-top: 40px;
+}
+
+    .contact-section .col-md-6 {
+        width: 50%;
+    }
+
+.form-line {
+    border-right: 1px solid #B29999;
+}
+
+.form-group {
+    margin-top: 10px;
+}
+/*label{
+  font-size: 1.3em;
+  line-height: 1em;
+  font-weight: normal;
+}*/
+.form-control {
+    /*font-size: 1.3em;*/
+    color: #080808;
+}
+
+textarea.form-control {
+    /*height: 135px;*/
+    /* margin-top: px;*/
+}
+
+.submit {
+    font-size: 1.1em;
+    float: right;
+    width: 150px;
+    background-color: transparent;
+    color: #fff;
+}
+
+.copyright {
+    background-color: white;
+    min-height: 50px;
+}
+
+    .copyright p {
+        padding: 10px;
+    }
+
+
+
+/*Carousel*/
+.carousel-inner {
+    background: rgba(13, 12, 12, 0.69)
+}
+
+    .carousel-inner > .item > img {
+        height: 360px;
+        margin: auto;
+        background: rgba(13, 12, 12, 0.88)
+    }
+
+/* Carousel */
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+/* Make .svg files in the carousel display properly in older browsers */
+.carousel-inner .item img[src$=".svg"] {
+    width: 100%;
+}
+
+/*.carousel-inner .active.left  { left: -33%;             }
+.carousel-inner .active.right { left: 33%;              }
+.carousel-inner .next         { left: 33%               }
+.carousel-inner .prev         { left: -33%              }
+.carousel-control.left        { background-image: none; }
+.carousel-control.right       { background-image: none; }
+.carousel-inner .item         { background: white;      }*/
+/* override position and transform in 3.3.x */
+.carousel-inner .item.left.active {
+    transform: translateX(-33%);
+}
+
+.carousel-inner .item.right.active {
+    transform: translateX(33%);
+}
+
+.carousel-inner .item.next {
+    transform: translateX(33%)
+}
+
+.carousel-inner .item.prev {
+    transform: translateX(-33%)
+}
+
+.carousel-inner .item.right,
+.carousel-inner .item.left {
+    transform: translateX(0);
+}
+
+
+.carousel-control.left, .carousel-control.right {
+    background-image: none;
+}
+
+/* Hide/rearrange for smaller screens */
+@media screen and (max-width: 767px) {
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
+}

@@ -1,0 +1,52 @@
+﻿<div class="">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-3">
+                <a href="@Url.Action("Index","Home")">
+                    <img class="logotype" src="~/Content/Images/Layout/GodelLogo.png" />
+                </a>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-2">
+                <div class="header-phone">
+                    <div class="row">
+                        <div class="col-xs-2">
+                            <i class="fa fa-mobile fa-2x"></i>
+                        </div>
+                        <div class="col-xs-10">
+                            <div>+375-29-111-11-11</div>
+                            <div class="header-phone available">Available 6 days</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-xs-8 col-sm-8 col-md-5">
+                @using (Html.BeginForm("GetSingleProduct", "Product"))
+                {
+                    <div class="imaginary-container">
+                        <div class="input-group stylish-input-group">
+                            <input type="text" id="autoSearch" name="autoSearch" class="form-control" placeholder="Search">
+                            <span class="input-group-addon">
+                                <button type="submit">
+                                    <span class="fa fa-search fa-lg"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-2">
+                <div id="onlyCart">
+                    @Html.Action("CartSummary", "Cart")
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $("#autoSearch").autocomplete({
+            source: '@Url.Action("GetProductsByName","Product")'
+        })
+    });
+</script>

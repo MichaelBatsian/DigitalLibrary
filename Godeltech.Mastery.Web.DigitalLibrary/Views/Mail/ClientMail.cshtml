@@ -1,0 +1,73 @@
+﻿@model Godeltech.Mastery.Web.DigitalLibrary.Models.View.ClientMailViewModel
+
+@{
+    var contextView = ViewContext.View as RazorView;
+    if (contextView != null)
+    {
+        Session["AjaxMailPartial"] = contextView.ViewPath;
+    }
+}
+<script type="text/javascript">
+    function ResetView() {
+        $('#sendClientrMailForm').trigger('reset');
+    }
+</script>
+<div id="sendCustomerMail" class="contacts">
+    <link href="https://fonts.googleapis.com/css?family=Oleo+Script:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Teko:400,700" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <section id="contact">
+        <div class="section-content">
+            <h1 class="section-header">Get in <span class="content-header wow fadeIn " data-wow-delay="0.2s" data-wow-duration="2s"> Touch with us</span></h1>
+        </div>
+        <div class="contact-section">
+            <div class="container">
+                @using (Ajax.BeginForm("SendClientMail", "Mail", new { isAttach = "false" }, new AjaxOptions
+                {
+                    UpdateTargetId = "sendCustomerMail",
+                    LoadingElementId = "loading",
+                    LoadingElementDuration = 1000,
+                    HttpMethod = "POST",
+                    OnSuccess = "ResetView",
+                }, new { @id = "sendClientrMailForm", @name = "sendClientrMailForm" }))
+                {
+                    <div class="col-md-6 form-line">
+                        <div class="form-group">
+                            <label>Your name</label>
+                            @Html.TextBoxFor(m => m.Name, "", new { @class = "form-control", @placeholder = "Enter name" })
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            @Html.TextBoxFor(m => m.Email, "", new { @class = "form-control", @placeholder = "Enter email" })
+                        </div>
+                        <div class="form-group">
+                            <label>Phone No.</label>
+                            @Html.TextBoxFor(m => m.Phone, "", new { @class = "form-control", @placeholder = "Enter phone number" })
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Message</label>
+                            @Html.TextAreaFor(m => m.Message, new { @class = "form-control", @placeholder = "Enter your message" })
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-default submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>Send Message</button>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+    @{
+        if (!string.IsNullOrEmpty(ViewBag.MessageSent))
+        {
+            <script>
+                alert("Your message was sent.");
+            </script>
+        }
+    }
+</div>
+
+
+

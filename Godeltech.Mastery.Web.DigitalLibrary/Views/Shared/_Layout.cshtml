@@ -1,0 +1,64 @@
+﻿@{
+    var viewContext = ViewContext.View as RazorView;
+    if (viewContext != null)
+    {
+        ViewData["Path"] = viewContext.ViewPath;
+        Session["ReturnUrl"] = viewContext.ViewPath;
+    }
+}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=980">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    @Styles.Render("~/bundles/defaultStyles")
+    @Styles.Render("~/bundles/OleoFont")
+    @RenderSection("styles", required: false)
+    <link rel="stylesheet" type="text/css" media="all" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/ui")
+    <title>@ViewBag.Title</title>
+</head>
+<body class="bodyView">
+    <div id="la yout-content">
+        <div class="header-strip">
+            @Html.Partial("_LayoutHeader")
+        </div>
+        <noscript>
+            <div class="noscript">
+                <h2 class="font">Please enable javasript for correct website work</h2>
+            </div>
+        </noscript>
+        <div class="header-menu">
+            @Html.Action("HeaderMenu", "Menu", new { c = Request.RequestContext.RouteData.Values["controller"], model = Model, data = ViewData })
+        </div>
+        @RenderBody()
+        <div class="footer-strip">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        @Html.Action("Map", "Menu")
+                    </div>
+                    <div class="col-md-3 col-md-offset-6">
+                        <h4>We're Social</h4>
+                        <a href="http://vk.com"
+                           class="social-icon google"></a>
+                        <a href="http://twitter.com"
+                           class="social-icon twitter"></a>
+                        <a href="http://facebook.com"
+                           class="social-icon facebook"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <div class="container">
+                <p> © 2017 White Orchid® All rights reserved</p>
+            </div>
+        </div>
+    </div>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

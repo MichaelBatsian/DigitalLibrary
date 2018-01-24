@@ -1,0 +1,61 @@
+﻿@model List<Godeltech.Mastery.Web.DigitalLibrary.Models.View.SliderImageViewModel>
+
+<div id="slider" class="carousel slide" data-ride="carousel" data-interval="6000">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        @{
+            int i = 0;
+            foreach (var item in Model)
+            {
+                if (i == 0)
+                {
+                    <li data-target="#slider" data-slide-to="@i.ToString()" class="active"></li>
+                }
+                else
+                {
+                    <li data-target="#slider" data-slide-to="@i.ToString()"></li>
+                }
+
+                i++;
+            }
+        }
+    </ol>
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" @*role="listbox"*@>
+        @{
+            int j = 0;
+            string itemActive = "item active";
+            foreach (var item in Model)
+            {
+                <div class="@itemActive">
+                    <div class="col-xs-4">
+                        <img src="@Model[j].ImagePath" class="img-responsive" alt="slide @j" />
+                        <div class="carousel-caption" role="option">
+                            <p>
+                                Best projects
+                                <a class="btn btn-default" href="http://greenlife.by">
+                                    Learn More
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                if (j == 0)
+                {
+                    itemActive = "item";
+                }
+                j++;
+            }
+        }
+    </div>
+    <!-- Controls -->
+    <a class="left carousel-control" href="#slider" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#slider" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+
+</div>

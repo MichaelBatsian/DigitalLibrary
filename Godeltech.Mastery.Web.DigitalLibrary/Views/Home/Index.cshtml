@@ -1,0 +1,55 @@
+﻿@*@model application.Models.PageListViewModel<ShopApp.DAL.Entities.Products>*@
+@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container slider-position">
+    @Html.Action("Slider", "Home")
+</div>
+<div class="products">
+    <div class="product-label">
+        <div class="container products">
+            <div class="title">
+                <img src="~/Content/Images/Home/books-library-legal-ss-1920.jpg" />
+            </div>
+
+        </div>
+    </div>
+    @*<div class="products-list">
+        <div class="container">
+            <div id="products">
+                @{
+                    Session["pages"] = 4;
+                }
+                @Html.Action("ListPartial", "Product")
+            </div>
+        </div>
+    </div>*@
+</div>
+@Html.Action("ClientMail", "Mail")
+
+
+@section styles
+{
+    <link href="~/Content/Custom/Home.css" rel="stylesheet" />
+}
+@section scripts
+{
+    <script src="~/Scripts/helpers/carousel-option.js"></script>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
