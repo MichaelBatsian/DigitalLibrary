@@ -24,6 +24,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -180,13 +181,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Slider.cs" />
-    <Compile Include="Models\View\Account\LoginViewModel.cs" />
-    <Compile Include="Models\View\Account\RegisterViewModel.cs" />
-    <Compile Include="Models\View\Account\ResetPasswordViewModel.cs" />
-    <Compile Include="Models\View\ClientMailViewModel.cs" />
-    <Compile Include="Models\View\ExtendedMenuItemViewModel.cs" />
-    <Compile Include="Models\View\MenuItemViewModel.cs" />
-    <Compile Include="Models\View\SliderImageViewModel.cs" />
+    <Compile Include="Models\ViewModels\AccountViewModels.cs" />
+    <Compile Include="Models\ViewModels\ClientMailViewModel.cs" />
+    <Compile Include="Models\ViewModels\ExtendedMenuItemViewModel.cs" />
+    <Compile Include="Models\ViewModels\MenuItemViewModel.cs" />
+    <Compile Include="Models\ViewModels\SliderImageViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -217,6 +216,12 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -232,6 +237,10 @@
     <ProjectReference Include="..\Godeltech.Mastery.DigitalLibrary.BLL\Godeltech.Mastery.DigitalLibrary.BLL.csproj">
       <Project>{401f5be0-ceff-4ab9-b4f9-1144a406c12a}</Project>
       <Name>Godeltech.Mastery.DigitalLibrary.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Godeltech.Mastery.DigitalLibrary.DAL\Godeltech.Mastery.DigitalLibrary.DAL.csproj">
+      <Project>{08d8c9a7-195d-4c8d-9d26-1e8bebe4e367}</Project>
+      <Name>Godeltech.Mastery.DigitalLibrary.DAL</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

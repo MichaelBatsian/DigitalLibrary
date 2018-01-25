@@ -1,9 +1,12 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using System;
+using Godeltech.Mastery.DigitalLibrary.DAL.EF;
+using Godeltech.Mastery.DigitalLibrary.DAL.Entities;
+using Godeltech.Mastery.DigitalLibrary.DAL.Identity;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Owin;
-
-//[assembly: OwinStartupAttribute(typeof(Godeltech.Mastery.Web.DigitalLibrary.Startup))]
 
 namespace Godeltech.Mastery.Web.DigitalLibrary
 {
@@ -17,14 +20,10 @@ namespace Godeltech.Mastery.Web.DigitalLibrary
 
         public void ConfigureAuth(IAppBuilder app)
         {
-      
             // Configure the db context, user manager and signin manager to use a single instance per request
-
-            //-- По идее эти репозитории будет создавать нинджект в Юнит оф ворке
-
-            //app.CreatePerOwinContext(ApplicationDbContext.Create);
-            //app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
-            //app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
+            app.CreatePerOwinContext(ApplicationDbContext.Create);
+            app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
+            app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
 
             // Enable the application to use a cookie to store information for the signed in user
             // and to use a cookie to temporarily store information about a user logging in with a third party login provider
@@ -33,8 +32,17 @@ namespace Godeltech.Mastery.Web.DigitalLibrary
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
                 LoginPath = new PathString("/Account/Login"),
+                Provider = new CookieAuthenticationProvider
+                {
+                    // Enables the application to validate the security stamp when the user logs in.
+                    // This is a security feature which is used when you change a password or add an external login to your account.  
+                    OnValidateIdentity = SecurityStampValidator.OnValidateIdentity<ApplicationUserManager, ApplicationUsers>(
+                        validateInterval: TimeSpan.FromMinutes(30),
+                        regenerateIdentity: (manager, user) => user.GenerateUserIdentityAsync(manager))
+                }
             });
-            app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
-          }
+           
+            app.CreatePerOwinContext<ApplicationRoleManager>(ApplicationRoleManager.Create);
+        }
     }
 }
