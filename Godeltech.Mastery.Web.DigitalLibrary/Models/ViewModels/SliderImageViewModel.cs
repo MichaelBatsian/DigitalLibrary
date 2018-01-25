@@ -1,4 +1,4 @@
-﻿namespace Godeltech.Mastery.Web.DigitalLibrary.Models.View
+﻿namespace Godeltech.Mastery.Web.DigitalLibrary.Models.ViewModels
 {
     public class SliderImageViewModel
     {

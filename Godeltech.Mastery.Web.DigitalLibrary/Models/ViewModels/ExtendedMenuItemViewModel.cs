@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
-using Godeltech.Mastery.Web.DigitalLibrary.Models.View.Account;
 
-namespace Godeltech.Mastery.Web.DigitalLibrary.Models.View
+namespace Godeltech.Mastery.Web.DigitalLibrary.Models.ViewModels
 {
     public class ExtendedMenuItemViewModel
     {

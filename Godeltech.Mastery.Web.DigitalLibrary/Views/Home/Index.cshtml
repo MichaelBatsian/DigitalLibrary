@@ -1,5 +1,4 @@
-﻿@*@model application.Models.PageListViewModel<ShopApp.DAL.Entities.Products>*@
-@{
+﻿@{
     ViewBag.Title = "Home Page";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -16,16 +15,7 @@
 
         </div>
     </div>
-    @*<div class="products-list">
-        <div class="container">
-            <div id="products">
-                @{
-                    Session["pages"] = 4;
-                }
-                @Html.Action("ListPartial", "Product")
-            </div>
-        </div>
-    </div>*@
+  
 </div>
 @Html.Action("ClientMail", "Mail")
 

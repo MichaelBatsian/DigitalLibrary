@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Web.Hosting;
 using System.Web.Mvc;
 using Godeltech.Mastery.Web.DigitalLibrary.Models;
-using Godeltech.Mastery.Web.DigitalLibrary.Models.View;
+using Godeltech.Mastery.Web.DigitalLibrary.Models.ViewModels;
 
 namespace Godeltech.Mastery.Web.DigitalLibrary.Controllers
 {

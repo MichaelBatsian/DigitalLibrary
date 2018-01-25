@@ -69,7 +69,7 @@ namespace Godeltech.Mastery.DigitalLibrary.DAL.EF
             modelBuilder.Configurations.Add(new BooksHistoriesMap());
             modelBuilder.Configurations.Add(new GenresMap());
             base.OnModelCreating(modelBuilder);
-            base.OnModelCreating(modelBuilder);
+          
         }
 
         public class DigitalLibraryDbInitializer : CreateDatabaseIfNotExists<ApplicationDbContext>

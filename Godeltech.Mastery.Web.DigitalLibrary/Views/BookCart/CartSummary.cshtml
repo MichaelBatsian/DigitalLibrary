@@ -1,0 +1,9 @@
+﻿@model application.Models.Cart
+    <div id="cart" class="cart">
+        <a href="@Url.Action("Index","Cart",new {returnUrl=Request.Path})">
+            @Model.GetTotalCost() $ (@Model.GetItems().Sum(i => i.Quantity))
+            <span class="glyphicon glyphicon-shopping-cart"></span>
+        </a>
+    </div>
+
+

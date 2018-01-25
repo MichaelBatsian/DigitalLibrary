@@ -10,7 +10,7 @@ namespace Godeltech.Mastery.DigitalLibrary.DAL.Entities
         public string Author { get; set; }
         public DateTime PublishingYear { get; set; }
         public string Publisher { get; set; }
-        public byte [] Image { get; set; }
+        //public byte [] Image { get; set; }
 
         //foreign kies
         public int GenreId { get; set; }

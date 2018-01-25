@@ -1,0 +1,63 @@
+﻿@model application.Models.Cart
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <div id="cart-body">
+        <h2 class="cart-label">Your cart</h2>
+        @if (Model != null&&Model.Items.Count>0)
+        {
+            @Html.Partial("CartProducts",Model)
+            <div class="form-group">
+                <a href="@TempData["returnUrl"]" class="btn btn-primary">Return</a>
+            </div>
+        }
+        else
+        {
+            <div class="jumbotron">
+                Cart is empty
+            </div>
+            <a href="@Url.Action("Index","Home")" class="btn btn-primary">Return</a>
+        }
+    </div>
+</div>
+
+@Styles.Render("~/Content/cart.css")
+@section scripts
+{
+    <script type="text/javascript">
+        function addValue(id, idBtn) {
+            document.getElementById(id).value++;
+            //document.getElementById(idForm).submit();
+            var jqIdBtn = "#" + idBtn;
+            $(jqIdBtn).trigger('click');
+        }
+
+        function reduceValue(id, idBtn) {
+            var val = document.getElementById(id).value;
+            if (val > 0) {
+                document.getElementById(id).value--;
+                //document.getElementById(idForm).submit();
+                 //var eventObj = new CustomEvent('durationchange');
+                 //document.getElementById(id).dispatchEvent(durationchange);
+                var jqIdBtn = "#" + idBtn;
+                $(jqIdBtn).trigger('click')
+            }
+        }
+
+        function updateCart(id)
+        {
+           document.getElementById(id).submit()
+        }
+    </script>
+}
+
+
+
+
+
+   
+
+

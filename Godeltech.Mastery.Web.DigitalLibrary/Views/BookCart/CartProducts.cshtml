@@ -1,0 +1,98 @@
+﻿@model application.Models.Cart
+
+<div id="cart-table">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <table  class="table table-striped">
+        <thead>
+            <tr>
+                <th>Picture</th>
+                <th>Product name</th>
+                <th>
+                    <div style="margin-left:38px;">
+                        Count
+                    </div>
+                </th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                int i = 0;
+            }
+            @foreach (var item in Model.GetItems())
+            {
+                string idProdQuantity = "productQuantity" + i;
+                <tr>
+                    <td>
+                        <div class="cart-picture">
+                            <img src="@Url.Action("GetImage","Product", new { productId =item.Product.ProductsID})"/>
+                        </div>
+                    </td>
+                    <td>
+                        @item.Product.Name
+                    </td>
+                    <td>
+                        @{string idForm = "updateForm" + i;}
+                        @using (Ajax.BeginForm("UpdateCart", "Cart",
+                            new
+                            {
+                                prodQuantityId = idProdQuantity,
+                                prodIndex = i
+                            },
+                            new AjaxOptions
+                            {
+                                UpdateTargetId = "cart-table"
+                            },
+                            new { @id = idForm }))
+                        {
+                            <div class="form-group">
+                                <div class="form-inline">
+                                    @{ string submitBtn = "submitBtn" + i;}
+                                    <a onclick="reduceValue('@idProdQuantity','@submitBtn')" class="btn btn-default fa fa-minus"></a>
+                                    @Html.TextBox(idProdQuantity, item.Quantity, new
+                               {
+                                   @ondurationchange = "updateCart('" + idForm + "')",
+                                   @class = "form-control",
+                                   @style = "width:40px"
+                               })
+                                    <a onclick="addValue('@idProdQuantity','@submitBtn')" class="btn btn-default fa fa-plus"></a>
+                                    <button style="display:none;" id="@submitBtn" type="submit" class="btn btn-default fa fa-plus"/>
+                                </div>
+                            </div>
+                        }
+                    </td>
+                    <td>
+                        @item.Product.Price
+                    </td>
+                    <td>
+                        @{
+                            string removeLink = "removeLink" + i;
+                            int productId = Model.Items[i].Product.ProductsID;
+                         }
+                        <a onclick="ajaxRemoveItem('@productId')" id="@removeLink" class="btn btn-danger fa fa-close"></a>
+                    </td>
+                </tr>
+                i++;
+            }
+
+            
+            <tr>
+                <th colspan="2">Total</th>
+                <th>@Model.GetTotalCount()</th>
+                <th colspan="2">@Model.GetTotalCost()</th>
+            </tr>
+        </tbody>
+    </table>
+    @Html.Action("OrderMail","Mail")
+
+</div>
+<script type="text/javascript">
+    function ajaxRemoveItem(prodId) {
+        $('#cart-table').load('@Url.Action("RemoveItem", "Cart")?prodId=' + prodId);
+        $('#onlyCart').load('@Url.Action("CartSummary", "Cart")');
+    }
+</script>
+
+
+
+

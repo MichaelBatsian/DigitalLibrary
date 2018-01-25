@@ -1,5 +1,5 @@
 ﻿
-@model Godeltech.Mastery.Web.DigitalLibrary.Models.View.ExtendedMenuItemViewModel
+@model Godeltech.Mastery.Web.DigitalLibrary.Models.ViewModels.ExtendedMenuItemViewModel
 
 @{
     if (ViewBag.LoginViewModel!=null)
@@ -17,13 +17,12 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-list menu-icon"></i>Categories<span class="caret"></span></a>
-                    @Html.Action("Dropdown", "Categories")
+                    @Html.Action("Dropdown", "Genres")
                 </li>
                  
                 @foreach (var item in Model.MenuItems)

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using Godeltech.Mastery.Web.DigitalLibrary.Models.View;
+using Godeltech.Mastery.Web.DigitalLibrary.Models.ViewModels;
 
 namespace Godeltech.Mastery.Web.DigitalLibrary.Models
 {
